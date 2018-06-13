@@ -20,14 +20,19 @@ const initalState: State = {
   peopleDisplay: []
 };
 
-export function reducer(state: State = initalState, action: PeopleActionUnion): State {
+export function reducer(
+  state: State = initalState,
+  action: PeopleActionUnion
+): State {
   switch (action.type) {
     case PeopleActionTypes.Load:
-      return {...state, loading: true };
+      return { ...state, loading: true };
     case PeopleActionTypes.LoadSuccess:
-      return {...state, loading: false, loaded: true, people: action.payload };
+      return { ...state, loading: false, loaded: true, people: action.payload };
     case PeopleActionTypes.LoadFailure:
-      return {...state, loading: false, loaded: false, error: true};
+      return { ...state, loading: false, loaded: false, error: true };
+    case PeopleActionTypes.ShowAll:
+      return { ...state, showAllDetails: true };
     default:
       return state;
   }

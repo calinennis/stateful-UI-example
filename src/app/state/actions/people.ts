@@ -4,7 +4,8 @@ import { Action } from '@ngrx/store';
 export enum PeopleActionTypes {
   Load = '[People] Load People',
   LoadSuccess = '[People] Successfully Load People',
-  LoadFailure = '[People] People Failed to Load'
+  LoadFailure = '[People] People Failed to Load',
+  ShowAll = '[People] Show the detail form for all people'
 }
 
 export class LoadPeople implements Action {
@@ -21,7 +22,12 @@ export class LoadPeopleFailure implements Action {
   readonly type = PeopleActionTypes.LoadFailure;
 }
 
+export class ShowAllPeopleDetails implements Action {
+  readonly type = PeopleActionTypes.ShowAll;
+}
+
 export type PeopleActionUnion =
   | LoadPeople
   | LoadPeopleSuccess
-  | LoadPeopleFailure;
+  | LoadPeopleFailure
+  | ShowAllPeopleDetails;
