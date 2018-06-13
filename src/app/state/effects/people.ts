@@ -28,25 +28,29 @@ export class PeopleEffects {
       })
     );
 
-    @Effect()
-    setPeopleDisplayState: Observable<Action> = this.actions
-      .ofType<PeopleActionUnion>(PeopleActionTypes.LoadSuccess)
-      .pipe(
-        withLatestFrom(this.store.select(getPeople)),
-        map(([action, people]) => {
-          const peopleDisplayState: PersonDisplay[] = this.createInitialPeopleDisplaySettings(people);
-          return new SetInitialPeopleDisplay(peopleDisplayState);
-        })
-      );
+  @Effect()
+  setPeopleDisplayState: Observable<Action> = this.actions
+    .ofType<PeopleActionUnion>(PeopleActionTypes.LoadSuccess)
+    .pipe(
+      withLatestFrom(this.store.select(getPeople)),
+      map(([action, people]) => {
+        const peopleDisplayState: PersonDisplay[] = this.createInitialPeopleDisplaySettings(
+          people
+        );
+        return new SetInitialPeopleDisplay(peopleDisplayState);
+      })
+    );
 
   constructor(private actions: Actions, private store: Store<AppState>) {}
 
-  createInitialPeopleDisplaySettings(people: Person[] ): PersonDisplay[] {
-    return people.map((person): PersonDisplay => {
-      return {
-        id: person.id,
-        isShowing: false
-      };
-    });
+  createInitialPeopleDisplaySettings(people: Person[]): PersonDisplay[] {
+    return people.map(
+      (person): PersonDisplay => {
+        return {
+          id: person.id,
+          isShowing: false
+        };
+      }
+    );
   }
 }
