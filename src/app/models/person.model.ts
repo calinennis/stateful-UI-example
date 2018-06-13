@@ -1,4 +1,5 @@
 import * as faker from 'faker';
+import { Observable, of } from 'rxjs';
 
 export interface Person {
   firstName: string;
@@ -42,4 +43,8 @@ export function createPersonsArray(): Array<Person> {
     i++;
   }
   return personsArray;
+}
+
+export function createMockPeopleRequestSuccess(): Observable<Person[]> {
+  return of(createPersonsArray());
 }
