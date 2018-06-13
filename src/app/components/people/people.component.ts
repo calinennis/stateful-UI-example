@@ -1,32 +1,31 @@
+import { Component, Input, OnInit } from '@angular/core';
+import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { AppState } from '../../state/reducers/app';
 import { Person } from './../../models/person.model';
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { getPeopleDisplay } from './../../state/reducers/app';
 
 @Component({
   selector: 'app-people',
   templateUrl: './people.component.html',
   styleUrls: ['./people.component.scss']
 })
-export class PeopleComponent implements OnInit, OnChanges {
+export class PeopleComponent implements OnInit {
   @Input() person: Person;
-  @Input() showDetails: boolean;
+  showDetailForm: Observable<boolean>;
 
-  showPersonDetails: boolean;
-
-  constructor() {}
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit() {
-    // if id is even or the all show flag is set, show details
-    if (this.person.id % 2 === 0 || this.showDetails) {
-      this.showPersonDetails = true;
-      console.log(this.person.lastName, this.showPersonDetails);
-    }
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    this.showPersonDetails = !!changes.showDetails.currentValue;
+    this.showDetailForm = this.store.pipe(
+      select(getPeopleDisplay),
+      map(people => people.find(person => this.person.id === person.id)),
+      map(personDisplay => personDisplay.isShowing)
+    );
   }
 
   toggleDetails() {
-    this.showPersonDetails = !this.showPersonDetails;
+    // TODO: Create Action to Toggle Detail display state
   }
 }

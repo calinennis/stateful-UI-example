@@ -3,7 +3,7 @@
     {{person.firstName}} {{person.lastName}}
     <button (click)="toggleDetails()" mat-raised-button color="accent" *ngIf="!showPersonDetails">Show Details</button>
   </mat-card-title>
-  <mat-card-content *ngIf="showPersonDetails">
+  <mat-card-content *ngIf="showDetailForm | async">
     <app-person-details-form [person]="person" (hideForm)="toggleDetails()"></app-person-details-form>
   </mat-card-content>
 </mat-card>
