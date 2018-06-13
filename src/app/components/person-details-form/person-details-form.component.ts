@@ -1,6 +1,9 @@
 import { Person } from './../../models/person.model';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../state/reducers/app';
+import { HidePersonDetails } from '../../state/actions/people';
 
 @Component({
   selector: 'app-person-details-form',
@@ -17,7 +20,7 @@ export class PersonDetailsFormComponent implements OnInit {
   personDetailsForm: FormGroup;
 
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private store: Store<AppState>) {}
 
   ngOnInit() {
     this.personDetailsForm = new FormGroup({
@@ -32,6 +35,6 @@ export class PersonDetailsFormComponent implements OnInit {
   }
 
   cancelEdit() {
-    this.hideForm.emit(true);
+    this.store.dispatch( new HidePersonDetails(this.person.id));
   }
 }

@@ -1,9 +1,9 @@
 <mat-card class="mb4">
   <mat-card-title fxLayoutAlign="space-between">
     {{person.firstName}} {{person.lastName}}
-    <button (click)="toggleDetails()" mat-raised-button color="accent" *ngIf="!(showDetailForm | async)">Show Details</button>
+    <button (click)="showDetails()" mat-raised-button color="accent" *ngIf="!(showDetailForm | async)">Show Details</button>
   </mat-card-title>
   <mat-card-content *ngIf="showDetailForm | async">
-    <app-person-details-form [person]="person" (hideForm)="toggleDetails()"></app-person-details-form>
+    <app-person-details-form [person]="person"></app-person-details-form>
   </mat-card-content>
 </mat-card>

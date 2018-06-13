@@ -1,3 +1,4 @@
+import { ShowPersonDetails } from './../../state/actions/people';
 import { Component, Input, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -25,7 +26,7 @@ export class PeopleComponent implements OnInit {
     );
   }
 
-  toggleDetails() {
-    // TODO: Create Action to Toggle Detail display state
+  showDetails() {
+    this.store.dispatch( new ShowPersonDetails(this.person.id));
   }
 }
