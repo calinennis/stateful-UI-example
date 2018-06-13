@@ -42,4 +42,5 @@ export function reducer(
   }
 }
 
-export const getPeople = (state: State) => state.people;
+export const getPeopleProperty = (state: State) => state.people;
+export const getPeopleDisplayProperty = (state: State) => state.peopleDisplay;

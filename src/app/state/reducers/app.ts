@@ -14,4 +14,5 @@ export const appReducer: ActionReducerMap<AppState> = {
 export const selectPeopleState = (state: AppState) => state.people;
 
 // people state property selectors
-export const getPeople = createSelector(selectPeopleState, fromPeople.getPeople);
+export const getPeople = createSelector(selectPeopleState, fromPeople.getPeopleProperty);
+export const getPeopleDisplay = createSelector(selectPeopleState, fromPeople.getPeopleDisplayProperty);
