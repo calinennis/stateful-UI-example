@@ -1,0 +1,34 @@
+<form [formGroup]="personDetailsForm" fxLayout="column" fxLayoutGap="1rem">
+
+  <div>
+    <mat-form-field fxFlex="25%">
+      <input type="text" matInput placeholder="First Name" formControlName="firstName">
+    </mat-form-field>
+    <mat-form-field fxFlex="25%">
+      <input type="text" matInput placeholder="Last Name" formControlName="lastName">
+    </mat-form-field>
+    <mat-form-field fxFlex="50%">
+      <input type="text" matInput placeholder="Position" formControlName="position">
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field fxFlex="25%">
+      <input type="text" matInput placeholder="Phone Number" formControlName="phoneNumber">
+    </mat-form-field>
+    <mat-form-field fxFlex="25%">
+      <input type="email" matInput placeholder="Email" formControlName="email">
+    </mat-form-field>
+    <mat-form-field fxFlex="50%">
+      <input type="text" matInput placeholder="Address" formControlName="address">
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="1rem">
+    <button (click)="cancelEdit()" mat-raised-button>Cancel</button>
+    <button type="submit" mat-raised-button color="primary">Save</button>
+  </div>
+
+
+
+</form>
