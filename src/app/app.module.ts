@@ -17,6 +17,12 @@ import { PeopleListComponent } from './components/people-list/people-list.compon
 import { PeopleComponent } from './components/people/people.component';
 import { PersonDetailsFormComponent } from './components/person-details-form/person-details-form.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { StoreModule } from '@ngrx/store';
+import { appReducer } from './state/reducers/app';
+import { EffectsModule } from '@ngrx/effects';
+import { AppEffects } from './state/effects/app';
+import { environment } from '../environments/environment';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
@@ -38,7 +44,10 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
     MatButtonModule,
     MatCardModule,
     MatExpansionModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    StoreModule.forRoot(appReducer),
+    EffectsModule.forRoot([AppEffects]),
+    !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
   providers: [],
   bootstrap: [AppComponent]
