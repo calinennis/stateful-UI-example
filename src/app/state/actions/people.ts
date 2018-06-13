@@ -7,7 +7,9 @@ export enum PeopleActionTypes {
   LoadSuccess = '[People] Successfully Load People',
   LoadFailure = '[People] People Failed to Load',
   SetInitialDisplay = '[People] Set the inital state of display for people',
-  ShowAll = '[People] Show the detail form for all people'
+  ShowAll = '[People] Show the detail form for all people',
+  HidePersonDetails = '[People] Hide Detail display for a person',
+  ShowPersonDetails = '[People] Show a persons Detail display'
 }
 
 export class LoadPeople implements Action {
@@ -34,10 +36,24 @@ export class ShowAllPeopleDetails implements Action {
   readonly type = PeopleActionTypes.ShowAll;
 }
 
+export class HidePersonDetails implements Action {
+  readonly type = PeopleActionTypes.HidePersonDetails;
+
+  constructor(public payload: number) {}
+}
+
+export class ShowPersonDetails implements Action {
+  readonly type = PeopleActionTypes.ShowPersonDetails;
+
+  constructor(public payload: number) {}
+}
+
 
 export type PeopleActionUnion =
   | LoadPeople
   | LoadPeopleSuccess
   | LoadPeopleFailure
   | SetInitialPeopleDisplay
-  | ShowAllPeopleDetails;
+  | ShowAllPeopleDetails
+  | HidePersonDetails
+  | ShowPersonDetails;
