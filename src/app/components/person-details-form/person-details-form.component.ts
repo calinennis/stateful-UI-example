@@ -14,9 +14,6 @@ export class PersonDetailsFormComponent implements OnInit {
   @Input()
   person: Person;
 
-  @Output()
-  hideForm: EventEmitter<boolean> = new EventEmitter<boolean>();
-
   personDetailsForm: FormGroup;
 
 

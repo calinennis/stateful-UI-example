@@ -1,9 +1,9 @@
-import { LoadPeople } from './../../state/actions/people';
-import { Component, Input, OnInit } from '@angular/core';
-import { Person } from './../../models/person.model';
+import { Component, OnInit } from '@angular/core';
+import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { Store, select } from '@ngrx/store';
 import { AppState, getPeople } from '../../state/reducers/app';
+import { Person } from './../../models/person.model';
+import { LoadPeople } from './../../state/actions/people';
 
 @Component({
   selector: 'app-people-list',
@@ -16,9 +16,7 @@ export class PeopleListComponent implements OnInit {
   constructor(private store: Store<AppState>) {}
 
   ngOnInit() {
-    this.people = this.store.pipe(
-      select(getPeople)
-    );
+    this.people = this.store.pipe(select(getPeople));
 
     this.store.dispatch(new LoadPeople());
   }

@@ -1,5 +1,4 @@
-import { Component, OnChanges, SimpleChanges } from '@angular/core';
-import { Person, createPersonsArray } from './models/person.model';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,11 +6,7 @@ import { Person, createPersonsArray } from './models/person.model';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Stateless UI Example';
-  people: Array<Person>;
-  showAllDetails = false;
+  title = 'Statefull UI With NgRx Store and Effects';
 
-  constructor() {
-    this.people = createPersonsArray();
-  }
+  constructor() {}
 }
