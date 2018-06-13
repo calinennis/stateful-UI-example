@@ -37,3 +37,5 @@ export function reducer(
       return state;
   }
 }
+
+export const getPeople = (state: State) => state.people;
