@@ -30,7 +30,6 @@
               {
                 "input": "node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
               },
-              "node_modules/tachyons-sass/tachyons.scss",
               "src/styles.scss"
             ],
             "scripts": []
