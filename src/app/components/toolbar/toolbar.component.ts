@@ -1,4 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { ShowAllPeopleDetails } from './../../state/actions/people';
+import { AppState } from './../../state/reducers/app';
+import { Component, Input, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-toolbar',
@@ -8,13 +11,11 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class ToolbarComponent implements OnInit {
   @Input() title: string;
 
-  constructor() {}
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit() {}
 
   triggerShowAll() {
-    alert(
-      'WHAT DO I DO HERE?! Do I try and two way bind a property from my parent to my child and worry about change detection? Do I have to create a singleton service that tracks the state of my person details showing/not showing?'
-    );
+    this.store.dispatch(new ShowAllPeopleDetails());
   }
 }
