@@ -1,13 +1,20 @@
+import { PersonDisplay } from './../../models/person-display.model';
 import { Person } from '../../models/person.model';
 
 export interface State {
-  people: Array<Person>;
-  showDetails: boolean;
+  people: Person[];
+  loading: boolean;
+  loaded: boolean;
+  showAllDetails: boolean;
+  peopleDisplay: PersonDisplay[];
 }
 
 const initalState: State = {
   people: [],
-  showDetails: false
+  loading: false,
+  loaded: false,
+  showAllDetails: false,
+  peopleDisplay: []
 };
 
 export function reducer(state: State = initalState, action): State {
