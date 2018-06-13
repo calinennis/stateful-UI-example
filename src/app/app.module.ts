@@ -1,3 +1,4 @@
+import { PeopleEffects } from './state/effects/people';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -46,7 +47,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     MatExpansionModule,
     MatSlideToggleModule,
     StoreModule.forRoot(appReducer),
-    EffectsModule.forRoot([AppEffects]),
+    EffectsModule.forRoot([AppEffects, PeopleEffects]),
     !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
   providers: [],

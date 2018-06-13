@@ -7,7 +7,6 @@ export interface State {
   loading: boolean;
   loaded: boolean;
   error: boolean;
-  showAllDetails: boolean;
   peopleDisplay: PersonDisplay[];
 }
 
@@ -16,7 +15,6 @@ const initalState: State = {
   loading: false,
   loaded: false,
   error: false,
-  showAllDetails: false,
   peopleDisplay: []
 };
 
@@ -31,8 +29,14 @@ export function reducer(
       return { ...state, loading: false, loaded: true, people: action.payload };
     case PeopleActionTypes.LoadFailure:
       return { ...state, loading: false, loaded: false, error: true };
+    case PeopleActionTypes.SetInitialDisplay:
+      return { ...state, peopleDisplay: action.payload };
     case PeopleActionTypes.ShowAll:
-      return { ...state, showAllDetails: true };
+      const displayAll: PersonDisplay[] = state.peopleDisplay.map(people => {
+        people.isShowing = true;
+        return people;
+      });
+      return { ...state, peopleDisplay: displayAll };
     default:
       return state;
   }
