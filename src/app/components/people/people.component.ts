@@ -16,6 +16,7 @@ export class PeopleComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     // if id is even or the all show flag is set, show details
+    // emulate some random bussiness requirement that dictates display state
     if (this.person.id % 2 === 0 || this.showDetails) {
       this.showPersonDetails = true;
       console.log(this.person.lastName, this.showPersonDetails);
